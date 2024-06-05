@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Login Page</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+	<!--	bootstrap 5.1.3-->
+	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+	<link rel="stylesheet" th:href="@{/css/app.css}" />
+
+
+
+</head>
+
+<body>
+	<div class="container">
+		<h2>Welcome to Drone Delivery System!</h2>
+		<div id="loginbox" style="margin-top: 50px">
+			<div class="panel panel-info">
+				<!--				<div class="panel-heading">-->
+				<!--					<div class="panel-title">Please sign in</div>-->
+				<!--				</div>-->
+				<div style="padding-top: 30px" class="panel-body">
+					<form th:action="@{/authenticateTheUser}" method="POST" class="form-horizontal">
+						<div class="form-group">
+							<div class="col-xs-10">
+								<div>
+									<div th:if="${param.error}">
+										<div class="alert alert-danger col-xs-offset-2 col-xs-8">
+											<h3 class="display-3">Invalid username or password.</h3>
+										</div>
+									</div>
+
+									<div th:if="${param.logout}">
+										<div class="alert alert-success col-xs-offset-2 col-xs-8">
+											<h3 class="display-3">Goodbye!</h3>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- User name -->
+						<!-- User name -->
+						<div style="margin-bottom: 30px" class="input-group-prepend">
+							<label class="form-label">Username</label>
+							<input type="text" name="username" placeholder="username" class="form-control"
+								aria-label="Large" required>
+						</div>
+
+
+						<div style="margin-bottom: 30px" class="input-group-prepend">
+							<label class="form-label">Password</label>
+							<input type="password" name="password" placeholder="password" class="form-control"
+								aria-label="Large" required>
+						</div>
+
+
+						<div style="margin-top: 30px" id="center" , class="form-group">
+							<button type="submit" class="btn btn-primary btn-lg btn-block">Login</button>
+
+
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

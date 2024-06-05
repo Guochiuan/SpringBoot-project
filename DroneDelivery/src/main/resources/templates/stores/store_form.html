@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/css/app.css}" />
+    <title>Store Management</title>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h3>Create New Store</h3>
+
+    <!--message checking-->
+    <!--
+
+    FLASH MESSAGE
+
+        WATCH change here
+         -->
+    <!--    <h2><div class="alert alert-primary" role="alert" th:text="${success}" th:if="${success}"></div></h2>-->
+    <!--    <h2><div class="alert alert-danger" role="alert" th:text="${error}" th:if="${error}"></div></h2>-->
+    <!--message checking end-->
+
+
+    <!--    <p class="h4 mb-4">Start Order</p>-->
+
+    <form action="#" th:action="@{/stores/save}" th:object="${store}" method="POST">
+        <!-- add hidden form field to handle update -->
+        <input type="hidden" th:field="*{id}" th:value="${store.id}"/>
+
+        <label>Enter Store Name:</label>
+        <input type="text" th:field="*{name}"
+               class="form-control mb-4 col-4" placeholder="Store Name">
+
+        <!--        <label>Choose Store Manager:</label>-->
+        <!--        &lt;!&ndash; map to the "Store store" in the Order class&ndash;&gt;-->
+        <!--        <select type="text" th:field="*{manager}" class="form-control mb-4 col-4" placeholder="Category Name">-->
+        <!--            <th:block th:each="manager : ${managerList}">-->
+        <!--                <option th:text="${manager.account_name}" th:value="${manager.id}" />-->
+        <!--            </th:block>-->
+        <!--        </select>-->
+
+        <label>Incoming Revenue:</label>
+        <input type="text" th:field="*{incomingRevenue}"
+               class="form-control mb-4 col-4" placeholder="Incoming Revenue">
+
+        <label>Completed Revenue:</label>
+        <input type="text" th:field="*{completedRevenue}"
+               class="form-control mb-4 col-4" placeholder="Completed Revenue">
+
+        <button type="submit" class="btn btn-info col-2">Submit</button>
+
+    </form>
+
+    <hr>
+    <a th:href="@{/stores/list}">Back to Store List</a>
+
+</div>
+</body>
+
+</html>

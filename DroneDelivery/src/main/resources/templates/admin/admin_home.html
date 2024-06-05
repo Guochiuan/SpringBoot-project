@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+
+    <meta charset="utf-8">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+    <link rel="stylesheet" th:href="@{/css/app.css}" />
+
+</head>
+<body>
+<div class="container">
+    <h3>Admin Dashboard</h3>
+    <hr>
+    <div class = "info">
+        <h5>User:</h5> <p sec:authentication="name"></p>
+        <h5>Role(s):</h5> <p sec:authentication="principal.authorities"></p>
+        <h5>First Name:</h5> <p th:text="admin"></p>
+        <h5>Last Name:</h5> <p th:text="admin"></p>
+    </div>
+    <hr>
+
+    <div class = "action">
+        <a th:href="@{/stores/list}" class="button">Store List</a>
+        <br><br>
+        <a th:href="@{/managers/list}" class="button">Store Manager List</a>
+        <br><br>
+        <a th:href="@{/customers/list}" class="button">Customer List</a>
+        <br><br>
+        <a th:href="@{/pilots/list}" class="button">Pilot List</a>
+        <br><br>
+        <a th:href="@{/drones/list}" class="button">Drone List</a>
+        <br><br>
+        <a th:href="@{/orders/list}" class="button">Order List</a>
+        <br><br>
+        <span th:if="${role == 'd'}">
+            <a th:href="@{/admin/logs}" class="button">
+                System Logs
+            </a>
+        </span>
+        <span th:unless="${role == 'd'}"></span>
+
+    </div>
+
+    <div class = "footer">
+    <form action="#" th:action="@{/logout}" method="POST">
+        <input type="submit" value="Logout" class="button" />
+    </form>
+    </div>
+</div>
+
+</body>
+</html>

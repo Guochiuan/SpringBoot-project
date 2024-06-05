@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+    <link rel="stylesheet" th:href="@{/css/app.css}" />
+    <title>Order Management</title>
+</head>
+
+<body>
+<div class = "container">
+    <h3>Order List</h3>
+    <hr>
+
+    <!--    add order button-->
+    <a th:href="@{/orders/new}"
+       class="button">
+        Add an Order
+    </a>
+    <br><br>
+    <table class="table table-border table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>ID</th>
+                <th>Store Name</th>
+                <th>Order Number</th>
+                <th>Total Price</th>
+                <th>Total Weight</th>
+                <th>Assigned Drone</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="order : ${orderList}">
+                <td th:text="${order.getId()}" />
+                <td th:text="${order.store.getName()}" />
+                <td th:text="${order.orderNumber}" />
+                <td th:text="${order.getTotalCost()}" />
+                <td th:text="${order.getTotalWeight()}" />
+                <td th:text="${order.getDrone().getSerialNum()}" />
+            </tr>
+        </tbody>
+    </table>
+
+    <hr>
+    <a th:href="@{/homepage}">Back to Welcome Page</a>
+</div>
+</body>
+</html>

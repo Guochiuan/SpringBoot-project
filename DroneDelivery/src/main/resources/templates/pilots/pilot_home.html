@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html lang="en" 
+		xmlns:th="http://www.thymeleaf.org"
+		xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+	<link rel="stylesheet" th:href="@{/css/app.css}" />
+	<title>Pilot Directory</title>
+</head>
+
+<body>
+<div class="container">
+	<h3>Pilot Dashboard</h3>
+	<hr>
+	<div class = "info">
+		<h5>User:</h5><p sec:authentication="name"></p>
+		<h5>Role(s):</h5><p sec:authentication="principal.authorities"></p>
+		<h5>First Name:</h5> <p th:text="${pilot.firstName}"></p>
+		<h5>Last Name:</h5> <p th:text="${pilot.lastName}"></p>
+		<h5>Tax ID:</h5> <p th:text="${pilot.taxId}"></p>
+		<h5>License ID:</h5> <p th:text="${pilot.licenseId}"></p>
+		<h5>Experience Level:</h5> <p th:text="${pilot.expLevel}"></p>
+	</div>
+	<hr>
+	<div class = "action">
+	<!-- The button "Pair with a Drone will assign a drone to the current pilot.
+	     The drones will be ordered by their loaded number of orders in the system.
+	     If all the drones in the system don;t have orders, it will return error message-->
+	<h4>Please get assigned a drone, then begin your work. Safe flight!</h4>
+	<br>
+	<a class ="button" href="/pilots/pair" role="button">Pair with a Drone</a>
+	<br>
+	<br>
+	<!-- The button "Fly Drone" will make all the orders on drone completed.
+	     After click this button, the system will have the following updates :
+	     1. The cost of each order will be added to the store;
+	     2. The pilot's experience level will be added by one;
+	     3. The number of remaining deliveries will be reduced by one;
+	     4. The pilot will be set free.
+	     5. The order will be removed from the system.                    -->
+	<a class ="button" href="/pilots/fly" role="button">Fly Drone</a>
+	</div>
+	
+	<div class = "footer">
+	<!-- Add a logout button -->
+	<form action="#" th:action="@{/logout}" method="POST">
+		<input type="submit" value="Logout" class ="button" />
+	</form>
+	</div>
+</div>
+	
+</body>
+</html>
+
+
+

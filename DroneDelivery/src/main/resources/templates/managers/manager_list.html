@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+    <link rel="stylesheet" th:href="@{/css/app.css}" />
+    <title>Inventory Management</title>
+</head>
+
+<body>
+<div class = "container">
+    <h3>Manager List</h3>
+    <hr>
+
+<!--    &lt;!&ndash;    add order button&ndash;&gt;-->
+<!--    <a th:href="@{/managers/new}"-->
+<!--       class="btn btn-primary btn-sm mb-3">-->
+<!--        Add New Store Manager-->
+<!--    </a>-->
+
+    <table class="table table-border table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+<!--                <th>Store Name</th>-->
+ 
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="manager : ${managerList}">
+                <td th:text="${manager.id}" />
+                <td th:text="${manager.firstName}" />
+                <td th:text="${manager.lastName}" />
+<!--                <td th:text="${manager.store.name}" />-->
+<!--                <td>-->
+<!--                    &lt;!&ndash; delete button &ndash;&gt;-->
+<!--                    <a th:href="@{'/managers/delete/' + ${manager.id}}"-->
+<!--                       class="btn btn-danger btn-sm mb-3"-->
+<!--                       onclick="if (!(confirm('Are you sure you want to delete this manager?'))) return false">-->
+<!--                        Delete-->
+<!--                    </a>-->
+<!--                </td>-->
+            </tr>
+        </tbody>
+    </table>
+
+    <hr>
+    <a th:href="@{/}">Back to Welcome Page</a>
+</div>
+</body>
+</html>

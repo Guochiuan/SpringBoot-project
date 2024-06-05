@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+    <link rel="stylesheet" th:href="@{/css/app.css}" />
+    <title>Pilot List</title>
+</head>
+
+<body>
+<div class = "container">
+<h3>Pilot List</h3>
+<hr>
+
+    <!--    add order button-->
+<!--    <a th:href="@{/pilots/new}"-->
+<!--       class="btn btn-primary btn-sm mb-3">-->
+<!--        Add New Store Manager-->
+<!--    </a>-->
+
+<table class="table table-border table-striped">
+    <thead class="thead-dark">
+    <tr>
+        <th>ID</th>
+        <th>Account Name</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Phone Number</th>
+        <th>Experience Level</th>
+        <th>License ID</th>
+        <th>Tax ID</th>
+<!--        <th>Drone ID</th>-->
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="pilot : ${pilotList}">
+        <td th:text="${pilot.id}" />
+        <td th:text="${pilot.accountName}" />
+        <td th:text="${pilot.firstName}" />
+        <td th:text="${pilot.lastName}" />
+        <td th:text="${pilot.phoneNumber}" />
+        <td th:text="${pilot.expLevel}" />
+        <td th:text="${pilot.licenseId}" />
+        <td th:text="${pilot.taxId}" />
+<!--        <td th:text="${pilot.drone.id}" />-->
+<!--        <td>-->
+<!--&lt;!&ndash;            &lt;!&ndash; delete button &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;            <a th:href="@{'/pilots/delete/' + ${pilot.id}}"&ndash;&gt;-->
+<!--&lt;!&ndash;               class="btn btn-danger btn-sm mb-3"&ndash;&gt;-->
+<!--&lt;!&ndash;               onclick="if (!(confirm('Are you sure you want to delete this pilot?'))) return false">&ndash;&gt;-->
+<!--&lt;!&ndash;                Delete&ndash;&gt;-->
+<!--&lt;!&ndash;            </a>&ndash;&gt;-->
+<!--        </td>-->
+    </tr>
+    </tbody>
+</table>
+
+<hr>
+<a th:href="@{/}">Back to Welcome Page</a>
+</div>
+</body>
+</html>

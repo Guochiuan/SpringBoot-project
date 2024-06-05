@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+
+    <meta charset="utf-8">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+    <link rel="stylesheet" th:href="@{/css/app.css}" />
+
+</head>
+<body>
+<div class="container">
+    <h3>Customer Dashboard</h3>
+    <hr>
+    <div class = "info">
+        <h5>Account Name:</h5>  <p sec:authentication="name"></p>
+        <h5>Role(s):</h5> <p sec:authentication="principal.authorities"></p>
+        <h5>First Name:</h5> <p th:text="${customer.firstName}"></p>
+        <h5>Last Name:</h5> <p th:text="${customer.lastName}"></p>
+        <h5>Phone:</h5> <p th:text="${customer.phoneNumber}"></p>
+    </div>
+    <hr>
+    <div class = "action">
+        <a th:href="@{/orders/new}" class="button">Add an Order</a>
+        <br><br>
+        <a th:href="@{/orders/list}" class="button">Your Order List</a>
+    </div>
+
+    <div class = "footer">
+    <form action="#" th:action="@{/logout}" method="POST">
+        <input type="submit" value="Logout" class="button" />
+    </form>
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,77 @@
+/* Stylesheet for the DroneDeliverySystem */
+/* For Test */
+/*header, div, a {*/
+/*  border: 1px solid blue;*/
+/*}*/
+/* Browser Reset */
+body, body* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+/* Global Styles */
+body {
+	background-color: beige;
+	color:#614124;
+}
+
+h2 {
+	text-align: center;
+	padding-top: 10%;
+}
+
+p {
+	color: black;
+	font-weight: bold;
+}
+
+.button {
+	background-color: #E8C07D;
+	color:#614124;
+	text-decoration: none;
+	padding: 10px 10px;
+	font-size: 20px;
+	font-weight: bold;
+	border-radius: 12px;
+}
+
+.button:hover {
+	background-color: #8FBDD3;
+	color:#614124;
+	text-decoration: none;
+}
+
+
+/* Layout Styles */
+.container {
+	margin:auto;
+	width:960px;
+	height:auto;
+}
+
+.info {
+	padding: 10px 10px;
+}
+
+.footer {
+	padding-top: 35px;
+}
+
+h3 {
+	padding-top: 30px;
+	color: #614124;
+}
+
+#loginbox {
+	margin-left:auto;
+	margin-right: auto;
+	width:40%;
+	padding: 10px;
+}
+
+#center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}

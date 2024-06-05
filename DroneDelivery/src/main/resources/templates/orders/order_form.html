@@ -1,0 +1,91 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+    <link rel="stylesheet" th:href="@{/css/app.css}" />
+    <title>Order Management</title>
+</head>
+
+<body>
+<script type="text/javascript" th:src="@{/js/HelperFunctions.js}"></script>
+
+<div class="container">
+<!--    Determine to "create" or "edit"-->
+    <div th:if="${orderDto.id % 1 == 0}">
+        <h3>Create New Order</h3>
+    </div>
+
+    <div th:unless="${orderDto.id % 1 == 0}">
+        <h3>Edit Order</h3>
+    </div>
+    <hr>
+
+    <!--    <p class="h4 mb-4">Start Order</p>-->
+
+    <form action="#" th:action="@{/orders/new}" th:object="${orderDto}" method="POST">
+        <!-- add hidden form field to handle update -->
+        <input type="hidden" th:field="*{id}" th:value="${orderDto.id}"/>
+        <label>Enter Order Name:</label>
+        <input type="text" th:field="*{orderNumber}"
+               class="form-control mb-4 col-4" placeholder="Order Name">
+
+        <label th:hidden="*{lines.size() != 0}">Choose Store:</label>
+        <!-- map to the "Store store" in the Order class-->
+        <select th:hidden="*{lines.size() != 0}" type="text" th:field="*{storeId}" class="form-control mb-4 col-4"
+                placeholder="Category Name" th:onchange="updateDropdown(this)">
+            <th:block th:each="store : ${storeList}">
+                <option th:text="${store.name}" th:value="${store.id}" />
+            </th:block>
+        </select>
+
+        <label>Choose Item:</label>
+        <div id="itemsContainer">
+            <div th:replace="fragments/orders_fragments :: dropdown-items('storeItemId')" />
+        </div>
+
+        <label>Choose Quantity:</label>
+        <input type="number" th:field="*{quantity}" class="form-control mb-4 col-4" placeholder="Quantity"  min="1" max="100">
+
+        <button type="submit" th:name="addItem" class="button">Add Item</button>
+        <br><br>
+        <label style="font-weight: bold;">Item List</label>
+        <table id="item-table" class="table table-border table-striped">
+            <thead class="thead-dark">
+            <tr>
+                <th>Item Name</th>
+                <th>Item Price</th>
+                <th>Item Weight</th>
+                <th>Item Quantity</th>
+                <th>Remove Item</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="line, stat : *{lines}">
+                <td><input readonly type="text" th:field="*{lines[__${stat.index}__].name}"></td>
+                <td><input readonly type="text" th:field="*{lines[__${stat.index}__].cost}"/></td>
+                <td><input readonly type="text" th:field="*{lines[__${stat.index}__].weight}"/></td>
+                <td><input type="number" th:field="*{lines[__${stat.index}__].quantity}"/></td>
+                <td>
+                    <!-- delete button -->
+                    <button type="submit" th:name="removeItem" th:value="${stat.index}" class="button">Remove</button>
+                </td>
+                <input th:hidden="true" type="number" th:field="*{lines[__${stat.index}__].itemId}"/>
+            </tr>
+            </tbody>
+        </table>
+        <button type="submit" class="button">Finish</button>
+    </form>
+    <label th:hidden="${errorMsg == null}" th:text="${errorMsg}"></label>
+    <hr>
+    <a th:href="@{/orders/list}">Back to Order List</a>
+
+</div>
+</body>
+
+</html>

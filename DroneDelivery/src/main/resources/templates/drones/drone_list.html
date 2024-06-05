@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+    <link rel="stylesheet" th:href="@{/css/app.css}" />
+    <title>Inventory Management</title>
+</head>
+
+<body>
+<div class = "container">
+    <h3>Drone List</h3>
+    <hr>
+
+    <!--    add order button-->
+    <a th:href="@{/drones/new}"
+       class="button">
+        Add New Drone
+    </a>
+    <br><br>
+    <table class="table table-border table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>ID</th>
+                <th>Serial Number</th>
+                <th>No. Deliveries Left</th>
+                <th>No. Orders</th>
+                <th>Lifting Capacity</th>
+                <th>Available Capacity</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="drone : ${droneList}">
+                <td th:text="${drone.id}" />
+                <td th:text="${drone.serialNum}" />
+                <td th:text="${drone.numDeliveriesLeft}" />
+                <td th:text="${drone.numOrders}" />
+                <td th:text="${drone.liftCap}" />
+                <td th:text="${drone.availableCap}" />
+                <td>
+                    <!-- update button -->
+                    <a th:href="@{'/drones/update/' + ${drone.id}}"
+                       class="btn btn-primary btn-sm mb-3">
+                        Update Drone Info
+                    </a>
+
+                    <!-- delete button -->
+                    <a th:href="@{'/drones/delete/' + ${drone.id}}"
+                       class="btn btn-danger btn-sm mb-3"
+                       onclick="if (!(confirm('Are you sure you want to delete this drone?'))) return false">
+                        Delete
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <hr>
+    <a th:href="@{/}">Back to Welcome Page</a>
+</div>
+</body>
+</html>

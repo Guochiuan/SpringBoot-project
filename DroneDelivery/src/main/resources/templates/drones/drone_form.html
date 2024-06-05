@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+    <link rel="stylesheet" th:href="@{/css/app.css}" />
+    <title>Inventory Management</title>
+</head>
+
+<body>
+
+<div class="container">
+<!--    Determine to "create" or "edit"-->
+    <div th:if="${drone.id % 1 == 0}">
+        <h3>Create New Drone</h3>
+    </div>
+
+    <div th:unless="${drone.id % 1 == 0}">
+        <h3>Edit Drone</h3>
+    </div>
+    <hr>
+
+<!--    <p class="h4 mb-4">Start Order</p>-->
+
+    <form action="#" th:action="@{/drones/save}" th:object="${drone}" method="POST">
+        <!-- add hidden form field to handle update -->
+        <input type="hidden" th:field="*{id}" th:value="${drone.id}"/>
+
+        <label>Enter Serial Number:</label>
+        <input type="text" th:field="*{serialNum}"
+               class="form-control mb-4 col-4" placeholder="Serial Number">
+
+        <label>Enter Number of Deliveries Left:</label>
+        <input type="text" th:field="*{numDeliveriesLeft}"
+               class="form-control mb-4 col-4" placeholder="Number of Deliveries Left">
+
+        <label>Enter Lifting Capacity:</label>
+        <input type="text" th:field="*{liftCap}"
+               class="form-control mb-4 col-4" placeholder="Lifting Capacity">
+
+        <label>Enter Available Capacity:</label>
+        <input type="text" th:field="*{availableCap}"
+               class="form-control mb-4 col-4" placeholder="Available Capacity">
+        <button type="submit" class="button">Submit</button>
+
+    </form>
+
+    <hr>
+    <a th:href="@{/drones/list}">Back to Drone List</a>
+
+</div>
+</body>
+
+</html>

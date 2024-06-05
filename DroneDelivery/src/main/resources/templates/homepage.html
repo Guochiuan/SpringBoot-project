@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+
+    <meta charset="utf-8">
+
+
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+    <link rel="stylesheet" th:href="@{/css/app.css}" />
+    <title>Drone Delivery System</title>
+</head>
+<body>
+<div class="container text-center">
+
+    <div>
+        User: <span sec:authentication="name"></span>
+        <br>
+        Role(s): <span sec:authentication="principal.authorities"></span>
+        <br><br>
+    </div>
+
+    <div><h1>Welcome to Drone Delivery System</h1></div>
+    <div class="p-2">
+        <a th:href="@{/stores/list}"
+           class="btn btn-primary btn-sm mb-3">
+            Store List</a>
+    </div>
+    <div class="p-2">
+        <a th:href="@{/managers/list}"
+           class="btn btn-primary btn-sm mb-3">
+            Store Manager List</a>
+    </div>
+    <div class="p-2">
+        <a th:href="@{/customers/list}"
+           class="btn btn-primary btn-sm mb-3">
+            Customer List</a>
+    </div>
+    <div class="p-2">
+        <a th:href="@{/pilots/list}"
+           class="btn btn-primary btn-sm mb-3">
+            Pilot List</a>
+    </div>
+    <div class="p-2">
+        <a th:href="@{/drones/list}"
+           class="btn btn-primary btn-sm mb-3">
+            Drone List</a>
+    </div>
+    <div class="p-2">
+        <a th:href="@{/orders/list}"
+           class="btn btn-primary btn-sm mb-3">
+            Your Order List</a>
+    </div>
+    <div class="p-">
+        <span th:if="${name == 'd'}"></span>
+        <span th:unless="${name == 'd'}"></span>
+
+        <a th:href="@{/admin/logs}"
+           class="btn btn-primary btn-sm mb-3">
+            System Logs</a>
+    </div>
+
+    <form action="#" th:action="@{/logout}"
+          method="POST">
+
+        <input type="submit" value="Logout" class="btn btn-outline-primary mt-2" />
+
+    </form>
+
+</div>
+
+</body>
+</html>

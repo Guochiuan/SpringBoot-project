@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+    <link rel="stylesheet" th:href="@{/css/app.css}" />
+    <title>tore Management</title>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h3>Create New Item</h3>
+    <hr>
+
+    <form action="#" th:action="@{/items/save}" th:object="${itemDto}" method="POST">
+        <!-- add hidden form field to handle update -->
+        <input type="hidden" th:field="*{itemId}" th:value="${item.id}"/>
+
+        <label>Enter Item Name:</label>
+        <input type="text" th:field="*{name}"
+               class="form-control mb-4 col-4" placeholder="Item Name">
+
+        <label>Enter Item Weight:</label>
+        <input type="text" th:field="*{weight}"
+               class="form-control mb-4 col-4" placeholder="Weight">
+
+        <label>Enter Item Price:</label>
+        <input type="text" th:field="*{price}"
+               class="form-control mb-4 col-4" placeholder="Item Price">
+
+        <label>Enter Store Name:</label>
+        <select type="text" th:field="*{storeId}" class="form-control mb-4 col-4" placeholder="Store Name">
+            <th:block th:each="store : ${storeList}">
+                <option th:text="${store.name}" th:value="${store.id}" />
+            </th:block>
+        </select>
+
+        <button type="submit" class="btn btn-info col-2">Submit</button>
+
+    </form>
+
+    <hr>
+
+
+
+
+
+
+
+    <div sec:authorize="hasRole('ROLE_ADMIN')">
+        <a th:href="@{/stores/list}">Back to Store List</a>
+    </div>
+    <div sec:authorize="hasRole('ROLE_MANAGER')">
+        <a th:href="@{/manager_user}">Back to Store List</a>
+    </div>
+
+
+
+
+</div>
+
+</body>
+
+</html>

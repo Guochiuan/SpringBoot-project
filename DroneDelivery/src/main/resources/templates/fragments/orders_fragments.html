@@ -1,0 +1,7 @@
+<div th:fragment="dropdown-items(storeItemId)">
+  <select type="text" id="storeItemId" name="storeItemId" class="form-control mb-4 col-4" placeholder="Item Name">
+    <th:block th:each="item : ${storeItems}">
+      <option th:text="${item.getItem().getName()}" th:value="${item.id}" />
+    </th:block>
+  </select>
+</div>

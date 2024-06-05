@@ -1,3 +1,12 @@
+#### Drone Delivery System 
+Our project, built on Spring Boot, Hibernate, and MySQL, Docker, features four distinct roles:
+
+1. Admin: Monitors the entire system.
+2. Store Managers: Add products for sale.
+3. Pilots: Deliver products to customers.
+4. Customers: Place orders.
+This streamlined process ensures efficient operations. 
+
 
 ### start docker application on your computer
 

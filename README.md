@@ -51,41 +51,32 @@ This streamlined process ensures efficient operations.
 ### We have preloaded the following users in the database, please feel free to try using these credentials
 - Administrator \
 Username: admin <br>
-Password: admin
+Password: admin <br>
 
 - Store Manger \
 Username: manager1 <br>
 Password: manager1 <br>
-\
 Username: manager2 <br>
 Password: manager2 <br>
-<br>
 Username: manager3 <br>
 Password: manager3 <br>
-<br>
 Username: manager4 <br>
 Password: manager4 <br>
 
 - Customer\
 Username: customer1 <br>
 Password: customer1<br>
-<br>
 Username: customer2 <br>
 Password: customer2<br>
-<br>
 Username: customer3 <br>
 Password: customer3<br>
-<br>
 
 - Pilot \
 Username: pilot1 <br>
 Password: pilot1 <br>
-\
 Username: pilot2 <br>
 Password: pilot2 <br>
-<br>
 Username: pilot3 <br>
 Password: pilot3 <br>
-<br>
 Username: pilot4 <br>
 Password: pilot4 <br>
